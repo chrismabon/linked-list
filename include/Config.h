@@ -1,7 +1,7 @@
 /**
  * @title Linked List
  * @project linked_list
- * @filename main.cpp
+ * @filename Config.h
  * @github https://github.com/chrismabon/linked_list
  * @author Chris Mabon
  *
@@ -9,10 +9,9 @@
  *
  */
 
-#include "test.h"
+
+#ifndef LINKED_LIST_CONFIG_H
+#define LINKED_LIST_CONFIG_H
 
 
-int main(int argc, char** argv) {
-
-    return run_tests();
-}
+#endif //LINKED_LIST_CONFIG_H

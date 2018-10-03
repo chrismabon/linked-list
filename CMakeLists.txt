@@ -3,12 +3,19 @@ project(linked_list)
 
 set(CMAKE_CXX_STANDARD 11)
 
-include_directories(include template linked_list)
-
 add_executable(linked_list
-        test.cpp
-        main.cpp
+        include/Config.h
+        include/List.h
+        include/Node.h
+        test.h
+        test/test_types.h
         template/List.tpp
-        include/Config.hpp
-        include/List.hpp
-        test.hpp)
+        template/Node.tpp
+        test/test_node_bool.cpp
+        test/test_node_char.cpp
+        test/test_node_float.cpp
+        test/test_node_int.cpp
+        test/test_node_string.cpp
+        test/test_types.cpp
+        test.cpp
+        main.cpp)

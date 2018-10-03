@@ -11,7 +11,6 @@
  */
 
 #include <iostream>
-#include "test.h"
 #include "test/test_types.h"
 
 using namespace std;
