@@ -13,6 +13,7 @@
 
 using namespace std;
 
+/*
 void test_node_string() {
     cout << "|I| \t\t\tBegin \"test_node_string\"" << endl;
     cout << "|~| =============================================" << endl;
@@ -58,3 +59,4 @@ void test_node_string() {
     cout << "|~| =============================================" << endl;
     cout << "|I| \t\t\tEnd \"test_node_string\"" << endl;
 }
+*/

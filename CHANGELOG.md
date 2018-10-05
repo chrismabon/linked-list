@@ -1,19 +1,38 @@
-# Change log
+<p style="color: #ff7e00; font-size: 1.8em;"><strong>Change log</strong></p>
 
-## [v0.0.2](https://github.com/chrismabon/linked-list) (2018-9-27)
+## (2018-10-04)
 
-**Additions**
+<h5 style="color: #ff7e00;"><a style="color: #ff7e00;" href="https://github.com/chrismabon/linked_list/tree/trunk/">v0.0.3 </a></h5>
 
-- Added a [CHANGELOG](https://github.com/chrismabon/linked-list/CHANGELOG.md)
+<h6 style="color: #ff0000;"><em>Additions</em></h6>
+
+- Added various tests
+- Added more comments to header files
+
+<h6 style="color: #ff0000;"><em>Changes</em></h6>
+
+- Colorized [README](https://github.com/chrismabon/linked_list/blob/trunk/README.md) and made edits
+- Colorized [CHANGELOG](https://github.com/chrismabon/linked_list/blob/trunk/CHANGELOG.md) and made yet more edits
+
+## (2018-9-27)
+
+<h5 style="color: #ff7e00;"><a style="color: #ff7e00;" href="https://github.com/chrismabon/linked_list/commit/e423c60cc6e1fbffc9ce8cdc023b70ae333bcc29">v0.0.2 </a></h5>
+
+<h6 style="color: #ff0000;"><em>Additions</em></h6>
+
+- Added a [CHANGELOG](https://github.com/chrismabon/linked_list/blob/trunk/CHANGELOG.md)
 - Added pre-existing Node and List class files
 - Added diagrams of Node and List as .dia and .png files
 - Created folders and organized files into them: /doc, /img, /include, /template
 
-**Changes**
+<h6 style="color: #ff0000;"><em>Changes</em></h6>
 
-- Edited the [README](https://github.com/chrismabon/linked-list/README.md) to better document the project
+- Edited the [README](https://github.com/chrismabon/linked_list/blob/trunk/README.md) to better document the project
 
-## [v0.0.1](https://github.com/chrismabon/linked-list/commit/fd53cc9912fb2b2713f4b740668c66fd9c3aac62) (2018-9-27)
-### *Initial commit*
+## (2018-9-27)
+
+<h5 style="color: #ff7e00;"><a style="color: #ff7e00;" href="https://github.com/chrismabon/linked_list/commit/fd53cc9912fb2b2713f4b740668c66fd9c3aac62">v0.0.1 </a></h5>
+
+<h6 style="color: #ff0000;"><em>*Initial commit*</em></h6>
 
 *(.gitignore, LICENSE, and README.md files are auto-generated)*

@@ -4,6 +4,7 @@ project(linked_list)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(linked_list
+        main.cpp
         include/Config.h
         include/List.h
         include/Node.h
@@ -18,4 +19,4 @@ add_executable(linked_list
         test/test_node_string.cpp
         test/test_types.cpp
         test.cpp
-        main.cpp)
+        test/test_list.cpp)
