@@ -15,7 +15,7 @@
 
 using namespace std;
 
-int run_tests() {
+int run_node_tests() {
     try {
         test_node_bool();
     }
