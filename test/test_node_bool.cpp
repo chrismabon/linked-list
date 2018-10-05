@@ -21,7 +21,7 @@ void test_node_bool() {
     cout << "|I| P = prompt" << endl;
     cout << "|I| ~ == spacer" << endl;
     int t_id = 3;
-    auto* t_data_0 = new bool(false);
+    auto* t_data_0 = new bool(true);
     auto* t_data_1 = new bool(false);
     auto* t_data_2 = new bool(true);
     auto* t_node_0 = new Node<bool>();
