@@ -1,13 +1,11 @@
 /**
  * @title Linked List
  * @project linked_list
- * @filename Node.h
  * @github https://github.com/chrismabon/linked_list
  * @author Chris Mabon
  *
- * TODO
- *
  */
+
 
 #ifndef LINKED_LIST_NODE_H
 #define LINKED_LIST_NODE_H
@@ -17,6 +15,7 @@
  * -Node
  *
  * TYPES ACCEPTED
+ * -Boolean
  * -integers
  * -characters
  * -floating-point
@@ -29,15 +28,25 @@ class Node {
 public:
     /*
      * BEHAVIOR
-     * -allocates space for the "data" variable
+     * -DOES NOT allocate space for the "data" var ("data" is NULL)
      * -all other fields set to 0 (NULL for "next" and "prev" links)
      */
     Node<T>();
 
     /*
      * BEHAVIOR
-     * -copy constructor 0 (verbatim)
-     * -copies all arguments
+     * -allocates space for the "data" var upon passing >0 or "true"
+     * -does not allocate space for "data" var upon passing 0 or "false"
+     * -all other fields set to 0 (NULL for "next" and "prev" links)
+     *
+     * ARGUMENTS
+     * -boolean determining "data" allocation behavior
+     */
+    explicit Node<T>(bool alloc_data);
+
+    /*
+     * BEHAVIOR
+     * -verbatim constructor, all fields are assigned via arguments
      * -if data type is a class, struct, or string: only the address is copied for the "data" variable
      *
      * ARGUMENTS
@@ -47,7 +56,7 @@ public:
 
     /*
      * BEHAVIOR
-     * -copy constructor 1 (referential)
+     * -copy constructor 0
      * -copies everything from get() calls to the given node
      *
      * ARGUMENTS
@@ -122,6 +131,12 @@ public:
      * -pass any standard integer >0 to print adjacent nodes as well
      */
     void print_node(int mode) const;
+
+    /*
+     * BEHAVIOR
+     * -generates a new Node with randomized data value
+     */
+    static Node<T>* gen_node();
 
 private:
     int node_index; // assigned upon addition to the list
