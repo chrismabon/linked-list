@@ -1,13 +1,12 @@
 /**
  * @title Linked List
  * @project linked_list
- * @filename List.h
  * @github https://github.com/chrismabon/linked_list
  * @author Chris Mabon
  *
- * TODO
- * add comments to header
+ *
  */
+
 
 #ifndef LINKED_LIST_LIST_H
 #define LINKED_LIST_LIST_H
@@ -19,6 +18,7 @@
  * -List
  *
  * TYPES ACCEPTED
+ * -Boolean
  * -integers
  * -characters
  * -floating-point
@@ -29,28 +29,79 @@
 template<class T>
 class List {
 public:
-    // sets "node_count" to 0, "head" and "tail" to NULL
+    /*
+     * BEHAVIOR
+     * -sets "node_count" to zero, and link vars to NULL
+     */
     List<T>();
-    // same as constructor
+
+    /*
+     * BEHAVIOR
+     * -traverses the input list and attempts to copy the fields of each node into
+     *      new nodes to be inserted into the list
+     * -does nothing if passed NULL
+     *
+     * ARGUMENTS
+     * -"input_list" must contain at least one node
+     */
+    explicit List<T>(List<T>* input_list);
+
+    /*
+     * BEHAVIOR
+     * -traverses the list, freeing every node allocated
+     * -WARNING: dynamically-allocated vars inside structs, unions, or classes used
+     *      as a data type for nodes are ->*NOT*<- freed!
+     * -sets "node_count" to zero, and link vars to NULL
+     */
     virtual ~List<T>();
 
+    /*
+     * BEHAVIOR
+     * -naively returns member vars
+     */
     int get_count() const;
-
-    void set_count(int input_count);
-
-    // increments "node_count"
-    void inc_count();
-
-    // decrements "node_count"
-    void dec_count();
 
     Node<T>* get_head() const;
 
-    void set_head(Node<T>* input_head);
-
     Node<T>* get_tail() const;
 
+    /*
+     * BEHAVIOR
+     * -checks to ensure count is zero or greater
+     *
+     * ARGUMENTS
+     * -accepts an integer to which "node_count" is assigned
+     */
+    void set_count(int input_count);
+
+    /*
+     * BEHAVIOR
+     * -assigns to "head" or "tail" without checking for NULL input
+     *
+     * ARGUMENTS
+     * -accepts pointer to Node template or NULL
+     */
+    void set_head(Node<T>* input_head);
+
     void set_tail(Node<T>* input_tail);
+
+    /*
+     * BEHAVIOR
+     * -increments count by the given integer
+     *
+     * ARGUMENTS
+     * -accepts an integer to add to "node"count"
+     */
+    void inc_count(int incrmt);
+
+    /*
+     * BEHAVIOR
+     * -decrements count by the given integer
+     *
+     * ARGUMENTS
+     * -accepts an integer to subtract from "node"count"
+     */
+    void dec_count(int decrmt);
 
     /*
      * BEHAVIOR
@@ -61,6 +112,19 @@ public:
      * -pass any regular integer >0 to print adjacent nodes as well
      */
     void print_list(int mode) const;
+
+    /*
+     * BEHAVIOR
+     * -inserts the given node into the Nth place in the list according to "index"
+     *      (like an array, 0 is first spot)
+     * -rearranges neighboring node pointers to accommodate new node
+     * -increments the list "node_count"
+     *
+     * ARGUMENTS
+     * -"input_node" must not be NULL or this function does nothing
+     * -"index" must be an integer >= 0
+     */
+    void add_node(int index, Node<T>* input_node);
 
     /*
      * BEHAVIOR
@@ -94,7 +158,7 @@ public:
      * ARGUMENTS
      * -input can be 0 (or NULL) and is not checked for validity
      *
-     * RETURN VALUES
+     * RETURN VALUE
      * -NULL if argument is NULL or the node is not found
      * -otherwise returns a pointer to the desired node
      */
@@ -106,6 +170,7 @@ public:
      * -this function can only operate on certain data types
      *      this includes:
      *      ~integers
+     *      -floats
      *      ~characters
      *      ~Boolean
      *      ~C++ string (NOT a C-style string!)
@@ -113,18 +178,31 @@ public:
      * ARGUMENTS
      * -accepts a non-NULL pointer to the data to match
      *
-     * RETURN VALUES
+     * RETURN VALUE
      * -NULL if the node is not found
      * -otherwise returns a pointer to the first node in the List
      *      with the specified "input_data"
      */
     Node <T>* find_node_data(T* input_data) const;
 
+    /*
+     * BEHAVIOR
+     * -generates a list "num_nodes" in length of random value nodes
+     *
+     * ARGUMENTS
+     * -integer must be >0 or this function does nothing
+     *
+     * RETURN VALUE
+     * -NULL if passed <= 0 or "false"
+     * -pointer to a new List upon success
+     */
+    static List<T>* gen_list(int num_nodes);
+
 private:
-    int node_count; // integer is fine, avoiding long lists
-    Node<T>* head;  // links to first and last nodes
-    Node<T>* tail;  // may be null to indicate empty list
-                    // ("node_count" should be zero if so)
+    int node_count; // -negative only upon error
+    Node<T>* head;  // -links to first and last nodes
+    Node<T>* tail;  //      may be null to indicate empty list
+                    //      ("node_count" should be zero if so)
 };
 
 #include "../template/List.tpp"
