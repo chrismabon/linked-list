@@ -1,5 +1,5 @@
 /**
- * @title Linked List class template
+ * @title Linked List
  * @project linked_list
  * @github https://github.com/chrismabon/linked_list
  * @author Chris Mabon
@@ -11,6 +11,7 @@
 #define LINKED_LIST_TEST_HPP
 
 #include "List.hpp"
+#include "Node.hpp"
 #include "Config.hpp"
 
 

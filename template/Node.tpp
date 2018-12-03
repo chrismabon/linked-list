@@ -12,7 +12,7 @@
 #include <exception>
 #include <random>
 #include <string>
-#include "../include/Node.h"
+#include "../include/Node.hpp"
 
 
 template<class T>
