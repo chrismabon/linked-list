@@ -13,7 +13,7 @@
 
 - Fixed a few bugs in list operation functions
 - Removed unrelated test code
-- List and node classes max length increased (integer limits)
+- List and node classes max length increased (integer size limits)
 - Colorized [README](https://github.com/chrismabon/linked_list/blob/trunk/README.md) and made edits
 - Colorized [CHANGELOG](https://github.com/chrismabon/linked_list/blob/trunk/CHANGELOG.md) and made yet more edits
 
