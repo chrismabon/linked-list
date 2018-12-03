@@ -4,10 +4,9 @@ project(linked_list)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(linked_list
-        include/Config.h
-        include/List.h
-        include/Node.h
-        test.h
+        include/Config.hpp
+        include/List.hpp
+        include/Node.hpp
         template/List.tpp
         template/Node.tpp
         test.cpp

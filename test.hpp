@@ -7,31 +7,38 @@
  */
 
 
-#ifndef LINKED_LIST_TEST_H
-#define LINKED_LIST_TEST_H
+#ifndef LINKED_LIST_TEST_HPP
+#define LINKED_LIST_TEST_HPP
+
+#include "List.hpp"
+#include "Node.hpp"
+#include "Config.hpp"
+
 
 int run_node_tests(int mode);
 
 int run_list_tests(int mode);
 
-void test_list_add();
+void test_list_add(int mode);
 
-void test_list_append();
+void test_list_append(int mode);
 
-void test_list_del();
+void test_list_del(int mode);
 
 void test_list_find_id();
 
-void test_list_find_data();
+void test_list_find_data(int mode);
 
 void test_node_int();
 
 void test_node_char();
 
-void test_node_string();
-
 void test_node_bool();
 
 void test_node_float();
 
-#endif //LINKED_LIST_TEST_H
+void test_node_str();
+
+void test_info();
+
+#endif //LINKED_LIST_TEST_HPP

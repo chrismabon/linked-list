@@ -7,8 +7,8 @@
  */
 
 
-#include "../include/List.h"
-#include "../include/Config.h"
+#include "../include/List.hpp"
+#include "../include/Config.hpp"
 #include <stdexcept>
 
 
