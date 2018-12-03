@@ -7,13 +7,14 @@
  */
 
 
-#include "test.h"
+#include "test.hpp"
 
-#define TEST_MODE 1
+#define TEST_MODE 4
 
 int main(int argc, char** argv) {
-    //ret_val =  run_node_tests(TEST_MODE);
-    int ret_val =  run_list_tests(TEST_MODE);
+//    run_node_tests(TEST_MODE);
+    run_list_tests(TEST_MODE);
 
-    return ret_val;
+
+    return 0;
 }
