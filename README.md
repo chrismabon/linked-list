@@ -80,7 +80,7 @@ overridden to do so:_
 <h2 style="color: ff7e00;">Visual Documentation</h2>
 
 Images crafted with the finest tools and the utmost precision using **[Dia](http://dia-installer.de/index.html.en)**
-diagram creator and [GIMP](https://www.gimp.org/) to add transparency:
+diagram creator and [GIMP](https://www.gimp.org/):
 
  Type | <h6 style="color: #ffffff;">White background</h6> | <h6 style="color: #000000;">No background</h6> | <h6 style="color: #ff0000;">Dia files</h6>
  ---: | :---: | :---: | :---:
