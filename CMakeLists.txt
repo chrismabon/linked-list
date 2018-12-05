@@ -6,11 +6,9 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(include template linked_list)
 
 add_executable(linked_list
-        template/List.tpp
-        template/Node.tpp
         test.cpp
         main.cpp
+        template/List.tpp
         include/Config.hpp
         include/List.hpp
-        include/Node.hpp
         test.hpp)

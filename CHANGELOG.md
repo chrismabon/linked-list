@@ -1,5 +1,18 @@
 <p style="color: #ff7e00; font-size: 1.8em;"><strong>Change log</strong></p>
 
+## (2018-12-05)
+
+<h5 style="color: #ff7e00;"><a style="color: #ff7e00;" href="https://github.com/chrismabon/linked_list/tree/trunk/">v0.0.4 </a></h5>
+
+<h6 style="color: #ff0000;"><em>Additions</em></h6>
+
+- Added a template file consolidating the project (without testing functions)
+
+<h6 style="color: #ff0000;"><em>Changes</em></h6>
+
+- Merged Node header and template files into List
+- Updated README.md to reflect changes in functionality, etc.
+
 ## (2018-12-02)
 
 <h5 style="color: #ff7e00;"><a style="color: #ff7e00;" href="https://github.com/chrismabon/linked_list/tree/trunk/">v0.0.3 </a></h5>

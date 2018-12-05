@@ -1,5 +1,5 @@
 /**
- * @title Linked List
+ * @title Linked List class template
  * @project linked_list
  * @github https://github.com/chrismabon/linked_list
  * @author Chris Mabon
@@ -9,7 +9,7 @@
 
 #include "test.hpp"
 
-#define TEST_MODE 4
+#define TEST_MODE 5
 
 int main(int argc, char** argv) {
 //    run_node_tests(TEST_MODE);

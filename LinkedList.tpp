@@ -7,8 +7,10 @@
  */
 
 
-#include "Config.hpp"
-#include "List.hpp"
+// length of any randomly-generated strings
+#define STR_NODE_GEN_LENGTH 10
+
+#include <string>
 #include <typeinfo>
 #include <iostream>
 #include <exception>
@@ -16,7 +18,422 @@
 #include <string>
 #include <stdexcept>
 
+// #################
+// ## DEFINITIONS ##
+// #################
 
+/* ||NODE CLASS TEMPLATE||
+ *
+ * TYPES ACCEPTED
+ * -Boolean
+ * -integers
+ * -characters
+ * -floating-point
+ * -C++ strings (no NULL-terminated C strings!)
+ *      (WARNING: List class does ->*NOT*<- free dynamically-allocated
+ *      vars inside struct/union/class nodes!)
+ */
+template<class T>
+class Node {
+public:
+    /* ||DEFAULT CONSTRUCTOR||
+     *
+     * BEHAVIOR
+     * -DOES NOT allocate space for the "data" var ("data" is NULL)
+     * -all other fields set to 0 (NULL for "next" and "prev" links)
+     */
+    Node<T>();
+
+    /* ||SECONDARY CONSTRUCTOR||
+     *
+     * BEHAVIOR
+     * -allocates space for the "data" var upon passing >0 or "true"
+     * -does not allocate space for "data" var upon passing 0 or "false"
+     * -all other fields set to 0 (NULL for "next" and "prev" links)
+     *
+     * ARGUMENTS
+     * -boolean determining "data" allocation behavior
+     */
+    explicit Node<T>(bool alloc_data);
+
+    /* ||"VERBATIM" CONSTRUCTOR||
+     *
+     * BEHAVIOR
+     * -verbatim constructor, all fields are assigned via arguments
+     *
+     * ARGUMENTS
+     * -node index, pointer to data, pointer to prev node, and pointer to next node in list
+     */
+    Node<T>(int input_index, T* input_data, Node<T>* input_prev, Node<T>* input_next);
+
+    /* ||COPY CONSTRUCTOR||
+     *
+     * BEHAVIOR
+     * -copy constructor 0
+     * -copies everything using get() calls to the input node
+     *
+     * ARGUMENTS
+     * -pointer to a Node<T>
+     */
+    explicit Node<T>(Node<T>* input_node);
+
+    /* ||DESTRUCTOR||
+     *
+     * BEHAVIOR
+     * -"data" var memory is freed
+     * -(WARNING) dynamically-allocated vars within structs, unions, and classes
+     *      are ->*NOT*<- freed because type_id() cannot tell them apart and member
+     *      vars are not known beforehand
+     * -all other fields set to 0 (NULL for "next" and "prev" links)
+     * -if data type is somehow an array or pointer,
+     *      "data" var is NOT freed
+     */
+    virtual ~Node<T>();
+
+    /* ||GET INDEX||
+     *
+     * BEHAVIOR
+     * -naively returns "node_index"
+     */
+    long long int get_index() const;
+
+    /* ||GET DATA, LINKS||
+     *
+     * BEHAVIOR
+     * -naively returns pointers to "data", "next" and "prev" members
+     */
+    T* get_data() const;
+
+    Node<T>* get_next() const;
+
+    Node<T>* get_prev() const;
+
+    /* ||SET INDEX||
+     *
+     * BEHAVIOR
+     * -if passed an integer >= 0, sets "node_index" to input var
+     *
+     * ARGUMENTS
+     * -standard integer type, must be positive or zero
+     */
+    void set_index(long long int input_index);
+
+    /* ||SET DATA||
+     *
+     * BEHAVIOR
+     * -if input var != NULL, assigns input var to "data" var
+     *      with respect to template data type
+     *
+     * ARGUMENTS
+     * -pointer to input data var
+     */
+    void set_data(T* input_data);
+
+    /* ||SET LINKS||
+     *
+     * BEHAVIOR
+     * -naively assigns pointer input to "next" or "prev" link
+     *
+     * ARGUMENTS
+     * -pointer to next or prev node
+     */
+    void set_next(Node<T>* next_ptr);
+
+    void set_prev(Node<T>* prev_ptr);
+
+    /* ||PRINT NODE||
+     *
+     * BEHAVIOR
+     * -three modes are available to adjust output (see ARGUMENTS)
+     * -if passed a negative integer, function does nothing
+     * -if data var points to null, function does nothing
+     *
+     * ARGUMENTS
+     * -pass 0 to print only node link addresses
+     * -pass 1 to print adjacent nodes as well
+     * -pass any integer >1 to prevent link-printing operations
+     */
+    void print_node(int mode) const;
+
+    /* ||NODE GENERATORS||
+     *
+     * BEHAVIOR
+     * -generates a new Node with randomized integer, float,
+     *      character, string, or boolean data value
+     */
+    static Node<int>* gen_node_int();
+
+    static Node<float>* gen_node_float();
+
+    static Node<char>* gen_node_char();
+
+    static Node<bool>* gen_node_bool();
+
+    static Node<std::string>* gen_node_str();
+
+    static Node<std::string>* gen_node_str(int str_len);
+
+private:
+    long long int node_index; // assigned upon addition to the list
+    T* data;        // pointer to data var
+    Node<T>* next;  // links to subsequent and preceding nodes
+    Node<T>* prev;  // (may be NULL to indicate the absence of one or both neighbors)
+};
+
+/* ||LINKED LIST CLASS TEMPLATE||
+ *
+ * TEMPLATE
+ * -List class
+ *
+ * TYPES ACCEPTED
+ * -Boolean
+ * -integers
+ * -characters
+ * -floating-point
+ * -C++ strings (no NULL-terminated C strings!)
+ *      (WARNING: List class does ->*NOT*<- free dynamically-allocated
+ *      vars inside struct/union/class nodes!)
+ */
+template<class T>
+class List {
+public:
+    /* ||DEFAULT CONSTRUCTOR||
+     *
+     * BEHAVIOR
+     * -sets "node_count" to zero, and link vars to NULL
+     */
+    List<T>();
+
+    /* ||COPY CONSTRUCTOR||
+     *
+     * BEHAVIOR
+     * -traverses the input list and attempts to copy the fields of each node into
+     *      new nodes to be inserted into the list
+     * -does nothing if passed NULL
+     *
+     * ARGUMENTS
+     * -"input_list" must contain at least one node
+     */
+    explicit List<T>(List<T>* input_list);
+
+    /* ||DESTRUCTOR||
+     *
+     * BEHAVIOR
+     * -traverses the list, freeing every node allocated
+     * -WARNING: dynamically-allocated vars inside structs, unions, or classes used
+     *      as a data type for nodes are ->*NOT*<- freed!
+     * -sets "node_count" to zero, and link vars to NULL
+     */
+    virtual ~List<T>();
+
+    /* ||GETS||
+     *
+     * BEHAVIOR
+     * -naively returns member vars
+     */
+    long long int get_id() const;
+
+    long long int get_count() const;
+
+    Node<T>* get_head() const;
+
+    Node<T>* get_tail() const;
+
+    /* ||SET COUNT AND ID||
+     *
+     * BEHAVIOR
+     * -checks to ensure input is non-negative
+     *
+     * ARGUMENTS
+     * -accepts a large integer to assign to "node_count"
+     *      or "list_id" respectively
+     */
+    void set_id(long long int input_id);
+
+    void set_count(long long int input_count);
+
+    /* ||SET LINKS||
+     *
+     * BEHAVIOR
+     * -assigns to "head" or "tail" without checking for NULL input
+     *
+     * ARGUMENTS
+     * -accepts pointer to Node template or NULL
+     */
+    void set_head(Node<T>* input_head);
+
+    void set_tail(Node<T>* input_tail);
+
+    /* ||INCREMENT COUNT||
+     *
+     * BEHAVIOR
+     * -increments count by the given integer
+     * -if no arguments passed, increments by 1
+     *
+     * ARGUMENTS
+     * -accepts an integer to add to "node count"
+     */
+    void inc_count();
+
+    void inc_count(int incrmt);
+
+    /* ||DECREMENT COUNT||
+     *
+     * BEHAVIOR
+     * -decrements count by the given integer
+     * -if no arguments passed, decrements by 1
+     *
+     * ARGUMENTS
+     * -accepts an integer to subtract from "node count"
+     */
+    void dec_count();
+
+    void dec_count(int decrmt);
+
+    /* ||PRINT THE LIST||
+     *
+     * BEHAVIOR
+     * -two modes are available to adjust output (see ARGUMENTS)
+     *
+     * ARGUMENTS
+     * -pass 0 to print only node link addresses
+     * -pass any regular integer >0 to print adjacent nodes as well
+     */
+    void print_list(int mode) const;
+
+    /* ||ADD A NODE||
+     *
+     * BEHAVIOR
+     * -inserts the given node into the Nth place in the list according to "index"
+     *      (like an array, 0 is first spot)
+     * -rearranges neighboring node pointers to accommodate new node
+     * -increments the list "node_count"
+     *
+     * ARGUMENTS
+     * -"input_node" must not be NULL or this function does nothing
+     * -"index" must be an integer >= 0
+     */
+    void add_node(int index, Node<T>* input_node);
+
+    /* ||APPEND A NODE||
+     *
+     * BEHAVIOR
+     * -sets the "id" of "input_node" to the current List "node_count"
+     * -adds given node to the end of the list, or sets "head"
+     *      and "tail" of the empty list to point to the new node
+     * -increments the list "node_count"
+     *
+     * ARGUMENTS
+     * -"input_node" must not be NULL or this function does nothing
+     */
+    void append_node(Node<T>* input_node);
+
+    /* ||DELETE A NODE||
+     *
+     * BEHAVIOR
+     * -if within a list:
+     *      ~reorders pointers of adjacent nodes to exclude "input_node"
+     *      ~if necessary, reassigns List "head" and/or "tail" pointers
+     *      ~deletes "input_node"
+     * -if not within a list, does nothing
+     *
+     * ARGUMENTS
+     * -"input_node" must not be NULL or this function does nothing
+     */
+    void remove_node(Node<T>* input_node);
+
+    /* ||UPDATE A NODE||
+     *
+     * BEHAVIOR
+     * -if within a list:
+     *      ~traverses list to node with input index
+     *      ~updates data var to the input data value
+     * -if list is empty, input index is <0, input index is > list count, or if input data is NULL,
+     *      this function does nothing
+     *
+     * ARGUMENTS
+     * -input index must be >= 0, and input data must not be NULL, otherwise this function does nothing
+     */
+    void update_node(int input_index, T* input_data);
+
+    /* ||REFRESH NODE INDICES||
+     *
+     * BEHAVIOR
+     * -if list is not empty, sets each node to the proper index (sequential order, 0 is first)
+     * -if list is empty this function does nothing
+     */
+    void refresh_nodes();
+
+    /* ||FIND NODE BY ID||
+     *
+     * BEHAVIOR
+     * -traverse the list to find a node by "node_index" field
+     *
+     * ARGUMENTS
+     * -input can be 0 (or NULL) and is not checked for validity
+     *
+     * RETURN VALUE
+     * -NULL if argument is NULL or the node is not found
+     * -otherwise returns a pointer to the desired node
+     */
+    Node<T>* find_node_id(int input_id) const;
+
+    /* ||FIND NODE BY DATA||
+     *
+     * BEHAVIOR
+     * -traverse the list to find a node by "data" field
+     * -this function can only operate on certain data types
+     *      this includes:
+     *      ~integers
+     *      -floats
+     *      ~characters
+     *      ~Boolean
+     *      ~C++ string (NOT a C-style string!)
+     *
+     * ARGUMENTS
+     * -accepts a non-NULL pointer to the data to match
+     *
+     * RETURN VALUE
+     * -NULL if the node is not found
+     * -otherwise returns a pointer to the first node in the List
+     *      with the specified "input_data"
+     */
+    Node<T>* find_node_data(T* input_data) const;
+
+    /* ||LIST GENERATORS||
+     *
+     * BEHAVIOR
+     * -generates a list "num_nodes" in length of random value of given type
+     *
+     * ARGUMENTS
+     * -integer must be >0 or this function does nothing
+     *
+     * RETURN VALUE
+     * -NULL if passed <= 0 or "false"
+     * -pointer to a new List upon success
+     */
+    static List<T>* gen_list_int(int num_nodes);
+
+    static List<T>* gen_list_float(int num_nodes);
+
+    static List<T>* gen_list_char(int num_nodes);
+
+    static List<T>* gen_list_bool(int num_nodes);
+
+    static List<T>* gen_list_str(int num_nodes);
+
+    static List<T>* gen_list_str(int num_nodes, int str_length);
+
+private:
+    long long int list_id;     // -optional, value does not affect list ops
+    long long int node_count;  // -negative only upon error
+    Node<T>* head;             // -links to first and last nodes
+    Node<T>* tail;             //      may be null to indicate empty list
+};
+
+// ####################
+// ## IMPLEMENTATION ##
+// ####################
 template<class T>
 Node<T>::Node() {
     try {
@@ -239,7 +656,7 @@ Node<int>* Node<T>::gen_node_int() {
         std::uniform_int_distribution<int> distribution_int(0, 10000);
         std::random_device rd_int;
         std::mt19937 engine_int(rd_int());
-        int* new_data_int = new int(distribution_int(engine_int));
+        auto* new_data_int = new int(distribution_int(engine_int));
         new_node->set_data(new_data_int);
 
         new_node->set_index(0);
@@ -261,7 +678,7 @@ Node<float>* Node<T>::gen_node_float() {
         std::uniform_real_distribution<float> distribution_float(0, 1);
         std::random_device rd_float;
         std::mt19937 engine_float(rd_float());
-        float* new_data_float = new float(distribution_float(engine_float));
+        auto* new_data_float = new float(distribution_float(engine_float));
         new_node->set_data(new_data_float);
 
         new_node->set_index(0);
@@ -284,7 +701,7 @@ Node<char>* Node<T>::gen_node_char() {
         std::uniform_int_distribution<char> distribution_char(32, 127);
         std::random_device rd_char;
         std::mt19937 engine_char(rd_char());
-        char* new_data_char = new char(distribution_char(engine_char));
+        auto* new_data_char = new char(distribution_char(engine_char));
         new_node->set_data(new_data_char);
 
         new_node->set_index(0);
@@ -306,7 +723,7 @@ Node<bool>* Node<T>::gen_node_bool() {
         std::uniform_int_distribution<unsigned short> distribution_bool(0, 1);
         std::random_device rd_bool;
         std::mt19937 engine_bool(rd_bool());
-        bool* new_data_bool = new bool(distribution_bool(engine_bool));
+        auto* new_data_bool = new bool(distribution_bool(engine_bool));
         new_node->set_data(new_data_bool);
 
         new_node->set_index(0);

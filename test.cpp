@@ -1,5 +1,5 @@
 /**
- * @title Linked List
+ * @title Linked List class template
  * @project linked_list
  * @github https://github.com/chrismabon/linked_list
  * @author Chris Mabon
@@ -10,7 +10,6 @@
 #include <iostream>
 #include "test.hpp"
 #include "List.hpp"
-#include "Node.hpp"
 #include "Config.hpp"
 
 using namespace std;
@@ -1094,6 +1093,7 @@ void test_list_find_data(int mode) {
                 cout << "|I| Value \"" << *test_str0 << "\" not found in list" << endl;
             }
 
+            list_str->get_tail()->set_data(test_str1);
             found_str = list_str->find_node_data(test_str1);
             list_str->print_list(0);
             if (found_str) {
@@ -1241,9 +1241,10 @@ int run_list_tests(int mode) {
             }
         case 5:
             try {
-                for(int i = 0; i < 5; i += 1) {
-                    test_list_find_data(i);
-                }
+//                for(int i = 0; i < 5; i += 1) {
+//                    test_list_find_data(i);
+//                }
+                test_list_find_data(4);
 
                 return 0;
             }
