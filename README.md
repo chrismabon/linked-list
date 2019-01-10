@@ -99,4 +99,4 @@ can be destructed properly, etc.
 
 This project is [licensed](LICENSE.md) under the GNU General Public License v3.0 (GNU GPLv3)
 
-[Copyright](COPYRIGHT.md) (C) 2018 Chris Mabon
+[Copyright](COPYRIGHT.md) (C) 2019 Chris Mabon
