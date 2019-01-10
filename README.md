@@ -95,5 +95,6 @@ diagram creator and [GIMP](https://www.gimp.org/):
 
 <h2 style="color: ff7e00;">License</h2>
 
-This project is licensed under the GNU General Public License v3.0 (GNU GPLv3)
-See [LICENSE](LICENSE.md) for details
+This project is [licensed](LICENSE.md) under the GNU General Public License v3.0 (GNU GPLv3)
+
+[Copyright](COPYRIGHT.md) (C) 2019 Chris Mabon
