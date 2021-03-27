@@ -7,23 +7,6 @@ Included generic class templates:
 * Node\<T\>
 * List\<T\>
 
-
-<h2 style="color: ff7e00;">Structure</h2>
-
-<h4 style="color: #ff0000;"><em>Node</em></h4>
-
-Generic type and bidirectional, allowing traversal from tail to head
-
-![Node structural diagram](img/node_layout_transp.png)
-
-
-<h4 style="color: #ff0000;"><em>List</em></h4>
-
-Maintains references to both head and tail node(s)
-
-![Linked list structural diagram](img/list_layout_transp.png)
-
-
 <h2 style="color: ff7e00;">Functionality</h2>
 
 <h6 style="color: #ff0000;"><em>Permitted data types:</em></h6>
@@ -75,22 +58,6 @@ overridden to do so:_
 * [CMake](https://cmake.org/documentation/) - C/C++ build manager v3.10.3
 * [GDB](https://www.gnu.org/software/gdb/documentation/) - GNU Project Debugger v8.1
 * [GCC](https://gcc.gnu.org/onlinedocs/) - GNU C/C++ compiler v8.2.0
-
-
-<h2 style="color: ff7e00;">Visual Documentation</h2>
-
-Images crafted with the finest tools and the utmost precision using **[Dia](http://dia-installer.de/index.html.en)**
-diagram creator and [GIMP](https://www.gimp.org/):
-
- Type | <h6 style="color: #ffffff;">White background</h6> | <h6 style="color: #000000;">No background</h6> | <h6 style="color: #ff0000;">Dia files</h6>
- ---: | :---: | :---: | :---:
- Node | [White](img/node_layout_white.png) | [None](img/node_layout_transp.png) | [.dia file](img/node_layout.dia)
- List | [White](img/list_layout_white.png) | [None](img/list_layout_transp.png) | [.dia file](img/list_layout.dia)
-
-
-<h2 style="color: ff7e00;">Authors</h2>
-
-[Chris Mabon](https://github.com/chrismabon) - *Contributor*
 
 
 <h2 style="color: ff7e00;">License</h2>
