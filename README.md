@@ -7,23 +7,6 @@ Included generic class templates:
 * Node\<T\>
 * List\<T\>
 
-
-<h2 style="color: ff7e00;">Structure</h2>
-
-<h4 style="color: #ff0000;"><em>Node</em></h4>
-
-Generic type and bidirectional, allowing traversal from tail to head
-
-![Node structural diagram](img/node_layout_transp.png)
-
-
-<h4 style="color: #ff0000;"><em>List</em></h4>
-
-Maintains references to both head and tail node(s)
-
-![Linked list structural diagram](img/list_layout_transp.png)
-
-
 <h2 style="color: ff7e00;">Functionality</h2>
 
 <h6 style="color: #ff0000;"><em>Permitted data types:</em></h6>
