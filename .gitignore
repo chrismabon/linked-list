@@ -1,3 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+### C++ template
 # Prerequisites
 *.d
 
@@ -30,3 +32,44 @@
 *.exe
 *.out
 *.app
+
+/.idea/.gitignore
+/.idea/linked-list.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/CMakeCCompilerId.c
+/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.cpp
+/cmake-build-debug/CMakeFiles/3.17.3/CMakeCCompiler.cmake
+/cmake-build-debug/CMakeFiles/3.17.3/CMakeCXXCompiler.cmake
+/cmake-build-debug/CMakeFiles/3.17.3/CMakeDetermineCompilerABI_C.bin
+/cmake-build-debug/CMakeFiles/3.17.3/CMakeDetermineCompilerABI_CXX.bin
+/cmake-build-debug/CMakeFiles/3.17.3/CMakeSystem.cmake
+/cmake-build-debug/CMakeFiles/linked-list.dir/build.make
+/cmake-build-debug/CMakeFiles/linked-list.dir/cmake_clean.cmake
+/cmake-build-debug/CMakeFiles/linked-list.dir/depend.make
+/cmake-build-debug/CMakeFiles/linked-list.dir/DependInfo.cmake
+/cmake-build-debug/CMakeFiles/linked-list.dir/flags.make
+/cmake-build-debug/CMakeFiles/linked-list.dir/link.txt
+/cmake-build-debug/CMakeFiles/linked-list.dir/progress.make
+/cmake-build-debug/CMakeFiles/linked_list.dir/build.make
+/cmake-build-debug/CMakeFiles/linked_list.dir/cmake_clean.cmake
+/cmake-build-debug/CMakeFiles/linked_list.dir/depend.make
+/cmake-build-debug/CMakeFiles/linked_list.dir/DependInfo.cmake
+/cmake-build-debug/CMakeFiles/linked_list.dir/flags.make
+/cmake-build-debug/CMakeFiles/linked_list.dir/link.txt
+/cmake-build-debug/CMakeFiles/linked_list.dir/progress.make
+/cmake-build-debug/CMakeFiles/clion-environment.txt
+/cmake-build-debug/CMakeFiles/clion-log.txt
+/cmake-build-debug/CMakeFiles/cmake.check_cache
+/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake
+/cmake-build-debug/CMakeFiles/CMakeOutput.log
+/cmake-build-debug/CMakeFiles/Makefile.cmake
+/cmake-build-debug/CMakeFiles/Makefile2
+/cmake-build-debug/CMakeFiles/progress.marks
+/cmake-build-debug/CMakeFiles/TargetDirectories.txt
+/cmake-build-debug/cmake_install.cmake
+/cmake-build-debug/CMakeCache.txt
+/cmake-build-debug/linked-list.cbp
+/cmake-build-debug/linked_list.cbp
+/cmake-build-debug/Makefile
