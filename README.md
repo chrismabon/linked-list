@@ -60,6 +60,22 @@ overridden to do so:_
 * [GCC](https://gcc.gnu.org/onlinedocs/) - GNU C/C++ compiler v8.2.0
 
 
+<h2 style="color: ff7e00;">Visual Documentation</h2>
+
+Images crafted with the finest tools and the utmost precision using **[Dia](http://dia-installer.de/index.html.en)**
+diagram creator and [GIMP](https://www.gimp.org/):
+
+ Type | <h6 style="color: #ffffff;">White background</h6> | <h6 style="color: #000000;">No background</h6> | <h6 style="color: #ff0000;">Dia files</h6>
+ ---: | :---: | :---: | :---:
+ Node | [White](img/node_layout_white.png) | [None](img/node_layout_transp.png) | [.dia file](img/node_layout.dia)
+ List | [White](img/list_layout_white.png) | [None](img/list_layout_transp.png) | [.dia file](img/list_layout.dia)
+
+
+<h2 style="color: ff7e00;">Authors</h2>
+
+[Chris Mabon](https://github.com/chrismabon) - *Contributor*
+
+
 <h2 style="color: ff7e00;">License</h2>
 
 This project is [licensed](LICENSE.md) under the GNU General Public License v3.0 (GNU GPLv3)
